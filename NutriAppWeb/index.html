@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro NutriApp</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 1rem; }
+        h1 { color: #2c3e50; }
+        input, button { margin: 5px 0; width: 100%; padding: 8px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>NutriApp - Registro</h1>
+
+    <form id="register-form">
+        <input type="text" id="register-username" placeholder="Usuario" required>
+        <input type="email" id="register-email" placeholder="Correo electrónico" required>
+        <input type="text" id="register-profile" placeholder="Foto de perfil (URL o nombre de archivo)">
+        <input type="password" id="register-password" placeholder="Contraseña" required>
+        <button type="submit">Registrar</button>
+    </form>
+    <p id="register-result"></p>
+
+    <form id="user-details-form" class="hidden">
+        <h2>Completar información nutricional</h2>
+        <input type="number" step="0.1" id="user-weight" placeholder="Peso (kg)" required>
+        <input type="number" id="user-calories" placeholder="Calorías diarias estimadas" required>
+        <button type="submit">Guardar datos</button>
+    </form>
+    <p id="details-result"></p>
+
+    <h1>Iniciar sesión</h1>
+    <form id="login-form">
+        <input type="text" id="login-username" placeholder="Usuario" required>
+        <input type="password" id="login-password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+    <p id="login-result"></p>
+
+    <script>
+        const apiUrl = "http://127.0.0.1:8000";
+
+        document.getElementById("register-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const username = document.getElementById("register-username").value;
+            const email = document.getElementById("register-email").value;
+            const profile_picture = document.getElementById("register-profile").value;
+            const password = document.getElementById("register-password").value;
+
+            const res = await fetch(`${apiUrl}/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, profile_picture, password })
+            });
+
+            const data = await res.json();
+            document.getElementById("register-result").textContent = data.msg || data.detail;
+
+            if (res.ok) {
+                // Mostrar formulario de datos adicionales
+                document.getElementById("user-details-form").classList.remove("hidden");
+            }
+        });
+
+        document.getElementById("user-details-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const weight = parseFloat(document.getElementById("user-weight").value);
+            const total_calories = parseInt(document.getElementById("user-calories").value);
+            const username = document.getElementById("register-username").value;
+
+            const res = await fetch(`${apiUrl}/update_user`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, weight, total_calories })
+            });
+
+            const data = await res.json();
+            document.getElementById("details-result").textContent = data.msg || data.detail;
+        });
+
+        document.getElementById("login-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+
+            const res = await fetch(`${apiUrl}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await res.json();
+            document.getElementById("login-result").textContent = data.msg || data.detail;
+        });
+    </script>
+</body>
+</html>
+
