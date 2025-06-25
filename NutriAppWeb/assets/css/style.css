@@ -1,0 +1,427 @@
+/* Reset básico */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Segoe UI", sans-serif;
+	background-color: #f4f6f8;
+	color: #2c3e50;
+	line-height: 1.6;
+}
+
+/* Header y navegación */
+header {
+	background-color: #3498db;
+	padding: 1rem 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+}
+
+nav ul li a {
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+	color: #ecf0f1;
+}
+
+/* Main content */
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+}
+
+main h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+	color: #2980b9;
+}
+
+main p {
+	font-size: 1.2rem;
+	max-width: 600px;
+	margin: auto;
+}
+
+/* Sección de contenido */
+section {
+	max-width: 800px;
+	margin: 2rem auto;
+	background-color: white;
+	padding: 2rem;
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+	margin-bottom: 1rem;
+	color: #2c3e50;
+}
+
+section p {
+	margin-bottom: 1rem;
+	text-align: justify;
+}
+
+/* Footer */
+footer {
+	background-color: #2c3e50;
+	color: white;
+	text-align: center;
+	padding: 1rem 0;
+	margin-top: 2rem;
+	font-size: 0.9rem;
+}
+
+/* Formularios Login/Registro */
+
+form input,
+form button {
+	width: 100%;
+	margin: 0.5rem 0;
+	padding: 0.75rem;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	font-size: 1rem;
+}
+
+form button {
+	background-color: #3498db;
+	color: white;
+	border: none;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+form button:hover {
+	background-color: #2980b9;
+}
+
+/* Botones de alternancia en la navegación */
+nav .toggle-buttons {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	margin-left: 0;
+}
+
+nav .toggle-buttons button {
+	background: none;
+	border: none;
+	color: white;
+	font-weight: bold;
+	font-size: 1rem;
+	cursor: pointer;
+	text-decoration: none;
+	transition: color 0.2s ease;
+	padding: 0;
+}
+
+nav .toggle-buttons button.active,
+nav .toggle-buttons button:hover {
+	color: #ecf0f1;
+}
+
+/* Contenedor animado */
+.login-container {
+	position: relative;
+	max-width: 420px;
+	margin: 2rem auto;
+	height: 90vh; /* Ajustalo si los formularios son más altos */
+	overflow: hidden;
+	perspective: 1000px;
+}
+
+/* Formularios con animación */
+.login,
+.Register {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	transform: translateX(100%);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	z-index: 0;
+}
+
+/* Mostrar formulario activo */
+.login.active,
+.Register.active {
+	opacity: 1;
+	transform: translateX(0);
+	z-index: 1;
+}
+
+/* Ocultar el anterior hacia la izquierda */
+.login.exit-left,
+.Register.exit-left {
+	transform: translateX(-100%);
+	opacity: 0;
+	z-index: 0;
+}
+
+/* Botones de navegación */
+.toggle-buttons button {
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+    background-color: #1abc9c;
+}
+
+
+
+/* Main Home */
+.home {
+    margin-left: 240px;
+    padding: 2rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info img.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Sección Recetas Saludables y Amigos */
+.healthy-recipes, .friends-section {
+    margin-top: 2rem;
+}
+
+.healthy-recipes ul, .friends-section ul {
+    padding: 0;
+    list-style: none;
+}
+
+/* Carrusel Recetas */
+.recetas {
+    margin-left: 240px;
+    padding: 2rem;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+}
+
+.carousel-card {
+    min-width: 250px;
+    background-color: #ecf0f1;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(44, 62, 80, 0.8);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+/* Recomendaciones médicas */
+.medic-info {
+    margin-left: 240px;
+    padding: 2rem;
+}
+
+.medic-carousel-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.medic-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+}
+
+.medic-card {
+    min-width: 250px;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.medic-card img.medic-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.medic-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(44, 62, 80, 0.8);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev-medic-btn {
+    left: 0;
+}
+
+.next-medic-btn {
+    right: 0;
+}
+
+/* Sección Configuración */
+.settings-section {
+    margin-left: 240px;
+    padding: 2rem;
+}
+
+.profile-tile {
+    background-color: #f0f0f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.profile-tile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.profile-tile input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.profile-tile button {
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.profile-tile button:hover {
+    background-color: #2980b9;
+}

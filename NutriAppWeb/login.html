@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>NutriApp - Inicio Seccion</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="toggle-buttons">
+                    <li><a href="index.html">Inicio</a></li>
+                    <button id="btn-login" class="active">Iniciar Sesión</button>
+                    <button id="btn-register">Registrarse</button>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-container" id ="login-container">
+        <div class="login" id="login">
+            <h1>Iniciar sesión</h1>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Usuario" required>
+                <input type="password" id="login-password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p id="login-result"></p>
+        </div>
+        <div class="Register" id="register">
+            <h2>NutriApp - Registro</h2>
+
+            <form id="register-form">
+                <input type="text" id="register-username" placeholder="Usuario" required>
+                <input type="email" id="register-email" placeholder="Correo electrónico" required>
+                <input type="text" id="register-profile" placeholder="Foto de perfil (URL o nombre de archivo)">
+                <input type="password" id="register-password" placeholder="Contraseña" required>
+                <button type="submit">Registrar</button>
+            </form>
+            <p id="register-result"></p>
+
+            <form id="user-details-form" class="hidden">
+                <h2>Completar información nutricional</h2>
+                <input type="text" id="register-fullname" placeholder="Nombre completo" />
+                <input type="number" id="register-height" placeholder="Altura en cm" />
+                <input type="number" step="0.1" id="user-weight" placeholder="Peso (kg)" required>
+                <input type="number" id="user-calories" placeholder="Calorías diarias estimadas" required>
+                <button type="submit">Guardar datos</button>
+            </form>
+            <p id="details-result"></p>
+        </div>
+    </main>
+    
+    
+    <script src="./assets/js/login.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+                const loginDiv = document.getElementById("login");
+                const registerDiv = document.getElementById("register");
+                const btnLogin = document.getElementById("btn-login");
+                const btnRegister = document.getElementById("btn-register");
+
+                function resetAnimation() {
+                    loginDiv.classList.remove("active", "exit-left");
+                    registerDiv.classList.remove("active", "exit-left");
+                }
+
+                function showLogin() {
+                    resetAnimation();
+                    registerDiv.classList.add("exit-left");
+                    loginDiv.classList.add("active");
+                    btnLogin.classList.add("active");
+                    btnRegister.classList.remove("active");
+                }
+
+                function showRegister() {
+                    resetAnimation();
+                    loginDiv.classList.add("exit-left");
+                    registerDiv.classList.add("active");
+                    btnRegister.classList.add("active");
+                    btnLogin.classList.remove("active");
+                }
+
+                if (window.location.hash === "#register") {
+                    showRegister();
+                } else {
+                    showLogin();
+                }
+
+                btnLogin.addEventListener("click", showLogin);
+                btnRegister.addEventListener("click", showRegister);
+            });
+
+
+
+    </script>
+</body>
+</html>
+

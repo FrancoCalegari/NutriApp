@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Perfil Usuario - NutriApp</title>
+    <script defer src="./assets/js/controllerprofile.js"></script>
+    <script defer src="./assets/js/uicontroller.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+<body>
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <img id="profile-picture" src="" alt="Foto de perfil" />
+                <li><button id="home-btn">home</button></li>
+                <li><button id="recetas-btn">recetas</button></li>
+                <li><button id="medic-info-btn">recomendaciones medicas</button></li>
+                <li><button id="settings-btn">Configuración</button></li>
+                <li><button id="logout-btn">Cerrar sesión</button></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="home">
+        <h2>¡Bienvenido, <span id="welcome-username"></span>!</h2>
+        <div class="user-info">
+            <img id="welcome-profile-picture" src="" alt="Foto de perfil" class="profile-img" />
+            <ul>
+                <li><strong>Nombre:</strong> <span id="welcome-fullname"></span></li>
+                <li><strong>Altura:</strong> <span id="welcome-height"></span> cm</li>
+                <li><strong>Peso:</strong> <span id="welcome-weight"></span> kg</li>
+                <li><strong>Email:</strong> <span id="welcome-email"></span></li>
+            </ul>
+        </div>
+        <div class="recetascarrusel">
+            <div class="carousel-container"></div>
+                <button class="carousel-btn prev-btn">&#10094;</button>
+                <div class="carousel">
+                    <div class="carousel-card">
+                        <img src="assets/img/ensalada.jpg" alt="Ensalada saludable">
+                        <h4>Ensalada Saludable</h4>
+                        <p>Lechuga, tomate, aguacate y pollo a la plancha.</p>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="assets/img/avena.jpg" alt="Avena con frutas">
+                        <h4>Avena con Frutas</h4>
+                        <p>Avena cocida con plátano, fresas y nueces.</p>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="assets/img/salmon.jpg" alt="Salmón al vapor">
+                        <h4>Salmón al Vapor</h4>
+                        <p>Salmón con espárragos y limón.</p>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="assets/img/quinoa.jpg" alt="Quinoa con verduras">
+                        <h4>Quinoa con Verduras</h4>
+                        <p>Quinoa, zanahoria, brócoli y pimientos salteados.</p>
+                    </div>
+            </div>
+            <button class="carousel-btn next-btn">&#10095;</button>
+        </div>
+        <div class="medic-info-carrusel">
+            <h2>Recomendaciones Médicas</h2>
+            <div class="medic-carousel-container">
+                <button class="medic-carousel-btn prev-medic-btn">&#10094;</button>
+                <div class="medic-carousel">
+                    <div class="medic-card">
+                        <img src="assets/img/medico1.jpg" alt="Dr. Juan Pérez" class="medic-img">
+                        <h4>Dr. Juan Pérez</h4>
+                        <p>Recomienda mantener una dieta balanceada y realizar actividad física diaria.</p>
+                    </div>
+                    <div class="medic-card">
+                        <img src="assets/img/medico2.jpg" alt="Dra. Ana Gómez" class="medic-img">
+                        <h4>Dra. Ana Gómez</h4>
+                        <p>Es importante hidratarse adecuadamente y evitar el consumo excesivo de azúcares.</p>
+                    </div>
+                    <div class="medic-card">
+                        <img src="assets/img/medico3.jpg" alt="Dr. Luis Martínez" class="medic-img">
+                        <h4>Dr. Luis Martínez</h4>
+                        <p>Recomienda dormir al menos 7 horas diarias para una buena salud.</p>
+                    </div>
+                    <div class="medic-card">
+                        <img src="assets/img/medico4.jpg" alt="Dra. Carla Ruiz" class="medic-img">
+                        <h4>Dra. Carla Ruiz</h4>
+                        <p>Controla tu peso regularmente y consulta a un especialista ante cualquier duda.</p>
+                    </div>
+                </div>
+                <button class="medic-carousel-btn next-medic-btn">&#10095;</button>
+            </div>
+        </div>
+    </main>
+    <section class="recetas">
+       
+    </section>
+    <section class="medic-info">
+        
+    </section>
+    <section id="settings" class="settings-section">
+        <h2>Información del Usuario</h2>
+        <div class="profile-tile">
+            <h1>Perfil de Usuario</h1>
+            <img id="profile-picture" src="" alt="Foto de perfil" />
+            <p>Usuario: <span id="profile-username"></span></p>
+            <button id="updateS-btn">Actualizar datos</button>
+            
+            <p id="update-result"></p>
+            <label for="edit-email">Email:</label>
+            <input type="email" id="edit-email" placeholder="Correo electrónico" />
+
+            <label for="edit-profile-picture">Foto de perfil (URL):</label>
+            <input type="text" id="edit-profile-picture" placeholder="URL de imagen" />
+
+            <label for="edit-weight">Peso (kg):</label>
+            <input type="number" step="0.1" id="edit-weight" placeholder="Peso" />
+
+            <label for="edit-calories">Calorías diarias estimadas:</label>
+            <input type="number" id="edit-calories" placeholder="Calorías" />
+            <button id="update-btn">Actualizar datos</button>
+        </div>
+    </section>
+
+
+</body>
+
+
+</html>
